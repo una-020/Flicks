@@ -71,6 +71,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Top Rated" id="B9N-zh-nev"/>
                     <connections>
+                        <outlet property="topRatedSearchBar" destination="gZ7-kc-ahs" id="TWY-4M-aqc"/>
                         <outlet property="topRatedTableView" destination="nZg-xk-567" id="k5M-C4-y1l"/>
                         <outlet property="topTableView" destination="nZg-xk-567" id="l5R-DA-sTe"/>
                     </connections>
@@ -105,7 +106,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lN9-V3-CVx" id="nnu-vX-4FH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="137.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpr-Bf-owv">
@@ -167,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="-76" y="793"/>
         </scene>
-        <!--View Controller-->
+        <!--Movies Detail Table View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MoviesDetailTableViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -178,20 +179,13 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Zu2-s2-MCH">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="xFo-wv-SEH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778" y="81"/>
+            <point key="canvasLocation" x="2154" y="869"/>
         </scene>
     </scenes>
 </document>

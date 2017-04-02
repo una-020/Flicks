@@ -14,6 +14,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var nowPlayingTable: UITableView!
     @IBOutlet weak var nowPlayingSearchBar: UISearchBar!
     @IBOutlet weak var topRatedTableView: UITableView!
+    //@IBOutlet weak var topRatedSearchBar: UISearchBar!
     
     
     //var
@@ -25,30 +26,30 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     var selectedIndexForRow:Int? = nil
     var selectedIndexForSection:Int? = nil
     var selectedImageURL:URL!
-    var searchActive:Bool = false
+    var searchActiveInNow:Bool = false
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true
+        searchActiveInNow = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false
+        searchActiveInNow = false
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false
+        searchActiveInNow = false
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
+        searchActiveInNow = false;
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.movies.filter({ (movie) -> Bool in return movie.title.contains(searchText)})
         if(filtered.count == 0){
-            searchActive = false;
+            searchActiveInNow = false;
         } else {
-            searchActive = true;
+            searchActiveInNow = true;
         }
         self.nowPlayingTable.reloadData()
     }
@@ -107,7 +108,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive) {
+        if(searchActiveInNow) {
             return filtered.count
         }
         return movies.count;
@@ -117,7 +118,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesTableViewCell") as! MoviesTableViewCell
         let movie: Movie
         
-        if(searchActive){
+        if(searchActiveInNow){
             movie = filtered[indexPath.row]
         } else {
             movie = movies[indexPath.row]
