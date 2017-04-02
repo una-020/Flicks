@@ -9,25 +9,35 @@
 import UIKit
 import AFNetworking
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
+class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var nowPlayingTable: UITableView!
     @IBOutlet weak var nowPlayingSearchBar: UISearchBar!
     @IBOutlet weak var topRatedTableView: UITableView!
-    //@IBOutlet weak var topRatedSearchBar: UISearchBar!
+    @IBOutlet weak var nowPlayingScroll: UIScrollView!
     
-    
-    //var
-    //let apiKey = "api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
     var urlToFetch = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
     
     var movies: [Movie] = []
     var filtered:[Movie] = []
+    
     var selectedIndexForRow:Int? = nil
     var selectedIndexForSection:Int? = nil
     var selectedImageURL:URL!
+    var selectedId:Int!
+    var selectedOverview:String!
+    var selectedMovie:String!
+    var selectedRelease:String = ""
+    var selectedVote:Float = 0.0
     var searchActiveInNow:Bool = false
     
+    var isMoreDataLoading = false
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActiveInNow = true
     }
@@ -54,49 +64,15 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         self.nowPlayingTable.reloadData()
     }
     
-//    func fetchMoviesList(fetchURL: String, nowOrTop: Bool){
-//        let url = URL(string: fetchURL)
-//        let request = URLRequest(url: url!)
-//        let session = URLSession(
-//            configuration: URLSessionConfiguration.default,
-//            delegate:nil,
-//            delegateQueue:OperationQueue.main
-//        )
-//        let task : URLSessionDataTask = session.dataTask(
-//            with: request as URLRequest,
-//            completionHandler: { (data, response, error) in
-//                if let data = data {
-//                    if let resultDictionary = try! JSONSerialization.jsonObject(
-//                        with: data, options:[]) as? NSDictionary {
-//                        let resultFieldDictionary = resultDictionary["results"] as? NSArray
-//                        for result in resultFieldDictionary as! [NSDictionary]{
-////                            print(result["backdrop_path"])
-////                            print(result["original_title"])
-////                            print(result["overview"])
-//                            self.movies.append(Movie(jsonResult: result))
-//                        }
-//                    }
-//                }
-////                print("nowPlaying: \(self.movies.count)")
-//                if( nowOrTop == true){
-//                    self.nowPlayingTable.reloadData()
-//                    print("nowPlaying: \(self.movies.count)")
-//                }
-//                else{
-//                    self.topRatedTableView.reloadData()
-//                    print("topRated: \(self.movies.count)")
-//                }
-//                //                refreshControl.endRefreshing()
-//        });
-//        task.resume()
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
         self.nowPlayingTable.rowHeight = 130.0
         self.nowPlayingTable.dataSource = self
         self.nowPlayingTable.delegate = self
         self.nowPlayingSearchBar.delegate = self
+        
         fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -136,5 +112,53 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         cell.overViewLabel.text = movie.overView
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let movie: Movie
+        if(searchActiveInNow){
+            movie = filtered[indexPath.row]
+        } else {
+            movie = movies[indexPath.row]
+        }
 
+        self.selectedIndexForRow = indexPath.row
+        self.selectedIndexForSection = indexPath.section
+        
+        if let poster = movie.poster  {
+            let posterURL = URL(string:"https://image.tmdb.org/t/p/w342/\(poster)")
+            self.selectedImageURL = posterURL
+            self.selectedId = movie.id
+            self.selectedOverview = movie.overView
+            self.selectedMovie = movie.title
+            self.selectedVote = movie.voteAverage
+            self.selectedRelease = movie.releaseDate
+        }
+        return indexPath
+       // URL(s)
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if (!isMoreDataLoading) {
+//            // Calculate the position of one screen length before the bottom of the results
+//            let scrollViewContentHeight = tableView.contentSize.height
+//            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+//            
+//            // When the user has scrolled past the threshold, start requesting
+//            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+//                isMoreDataLoading = true
+//                
+//                // ... Code to load more results ...
+//            }
+//        }
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! MovieDetailsViewController
+        vc.posterURL = self.selectedImageURL
+        vc.id = self.selectedId
+        vc.overViewDetails = self.selectedOverview
+        vc.movieTitle = self.selectedMovie
+        vc.movieRelease = self.selectedRelease
+        vc.movieRate = self.selectedVote
+    }
 }

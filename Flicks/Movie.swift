@@ -12,6 +12,8 @@ class Movie{
     var title: String
     var overView: String
     var id: Int
+    var releaseDate: String
+    var voteAverage: Float
     
     init(jsonResult: NSDictionary) {
         if let posterURL = jsonResult["backdrop_path"] as? String {
@@ -23,11 +25,12 @@ class Movie{
         self.title = jsonResult["original_title"] as! String
         self.overView = jsonResult["overview"] as! String
         self.id = jsonResult["id"] as! Int
+        self.releaseDate = jsonResult["release_date"] as! String
+        self.voteAverage = jsonResult["vote_average"] as! Float
     }
 }
 
 class MovieDetails{
-
     var id: Int
     var releaseDate: String
     var runTime: Int?

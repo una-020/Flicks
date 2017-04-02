@@ -22,6 +22,7 @@ class TopRatedViewController: NowPlayingViewController {
     
     override func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.movies.filter({ (movie) -> Bool in return movie.title.contains(searchText)})
+
         if(filtered.count == 0){
             searchActiveInNow = false;
         } else {
@@ -30,34 +31,6 @@ class TopRatedViewController: NowPlayingViewController {
         //print("Inside TopRated searchBar. Matching is \(filtered.count)")
         self.topTableView.reloadData()
     }
-
-    
-//    override func fetchMoviesList(fetchURL: String){
-//        let url = URL(string: fetchURL)
-//        let request = URLRequest(url: url!)
-//        let session = URLSession(
-//            configuration: URLSessionConfiguration.default,
-//            delegate:nil,
-//            delegateQueue:OperationQueue.main
-//        )
-//        let task : URLSessionDataTask = session.dataTask(
-//            with: request as URLRequest,
-//            completionHandler: { (data, response, error) in
-//                if let data = data {
-//                    if let resultDictionary = try! JSONSerialization.jsonObject(
-//                        with: data, options:[]) as? NSDictionary {
-//                        let resultFieldDictionary = resultDictionary["results"] as? NSArray
-//                        for result in resultFieldDictionary as! [NSDictionary]{
-//                            self.topMovies.append(Movie(jsonResult: result))
-//                        }
-//                    }
-//                }
-//                    print("TopRatedViewController: \(self.topMovies.count)")
-//                    self.topTableView.reloadData()
-//                //                refreshControl.endRefreshing()
-//        });
-//        task.resume()
-//    }
 
     override func viewDidLoad() {
         self.topTableView.rowHeight = 130.0
@@ -73,43 +46,6 @@ class TopRatedViewController: NowPlayingViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if(searchActiveInTop){
-//            return filtered.count}
-//        return topMovies.count
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        //var cell = UITableViewCell() //tableView.dequeueReusableCell(withIdentifier: "MoviesTableViewCell") as! MoviesTableViewCell
-//        
-//        var cell = tableView.dequeueReusableCell(withIdentifier: "MoviesTableViewCell") as! MoviesTableViewCell
-//        let movie: Movie
-//        
-//        if(searchActiveInTop){
-//            movie = filtered[indexPath.row]
-//        } else {
-//            movie = topMovies[indexPath.row]
-//        }
-//
-////        cell.textLabel?.text = movie.title
-////        print(movie.title)
-//        if let poster = movie.poster  {
-//            let posterURL = URL(string:"https://image.tmdb.org/t/p/w342/\(poster)")
-//            cell.moviesImageView.setImageWith(posterURL!)
-//        } else {
-//            // photos is nil. Good thing we didn't try to unwrap it!
-//            cell.moviesImageView.image = nil
-//        }
-//        
-//        cell.movieNameLabel.text = movie.title
-//        cell.movieNameLabel.adjustsFontSizeToFitWidth = true
-//        cell.overViewLabel.text = movie.overView
-//        return cell
-//    }
-//    
-    
-
-
     /*
     // MARK: - Navigation
 

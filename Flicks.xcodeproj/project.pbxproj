@@ -17,7 +17,7 @@
 		8FC6627E1E8F31F900BF1A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FC6627D1E8F31F900BF1A25 /* Assets.xcassets */; };
 		8FC662811E8F31F900BF1A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FC6627F1E8F31F900BF1A25 /* LaunchScreen.storyboard */; };
 		8FE26F791E904D34001D4938 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE26F781E904D34001D4938 /* FetchData.swift */; };
-		8FF80BDF1E8F7EC2004C16D5 /* moviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF80BDE1E8F7EC2004C16D5 /* moviesTableViewController.swift */; };
+		8FE26F7B1E90876A001D4938 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE26F7A1E90876A001D4938 /* MovieDetailsViewController.swift */; };
 		8FF80BE31E8F913D004C16D5 /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF80BE21E8F913D004C16D5 /* MoviesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +35,7 @@
 		8FC662801E8F31F900BF1A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FC662821E8F31F900BF1A25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FE26F781E904D34001D4938 /* FetchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
-		8FF80BDE1E8F7EC2004C16D5 /* moviesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moviesTableViewController.swift; sourceTree = "<group>"; };
+		8FE26F7A1E90876A001D4938 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		8FF80BE21E8F913D004C16D5 /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
 		DB7E0C596A10B8647A4377F2 /* Pods-Flicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,10 +98,10 @@
 				8FC662821E8F31F900BF1A25 /* Info.plist */,
 				8FC6627A1E8F31F900BF1A25 /* Flicks.xcdatamodeld */,
 				8FAD16401E8F6DEB009E771E /* TopRatedViewController.swift */,
-				8FF80BDE1E8F7EC2004C16D5 /* moviesTableViewController.swift */,
 				8FF80BE21E8F913D004C16D5 /* MoviesTableViewCell.swift */,
 				8F8219CC1E8FB3D4000C6BE8 /* Movie.swift */,
 				8FE26F781E904D34001D4938 /* FetchData.swift */,
+				8FE26F7A1E90876A001D4938 /* MovieDetailsViewController.swift */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -229,10 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FE26F7B1E90876A001D4938 /* MovieDetailsViewController.swift in Sources */,
 				8F8219CD1E8FB3D4000C6BE8 /* Movie.swift in Sources */,
 				8FF80BE31E8F913D004C16D5 /* MoviesTableViewCell.swift in Sources */,
 				8FC6627C1E8F31F900BF1A25 /* Flicks.xcdatamodeld in Sources */,
-				8FF80BDF1E8F7EC2004C16D5 /* moviesTableViewController.swift in Sources */,
 				8FAD16411E8F6DEB009E771E /* TopRatedViewController.swift in Sources */,
 				8FC662761E8F31F900BF1A25 /* NowPlayingViewController.swift in Sources */,
 				8FE26F791E904D34001D4938 /* FetchData.swift in Sources */,
