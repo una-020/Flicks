@@ -8,19 +8,30 @@
 
 import UIKit
 import AFNetworking
-
+//import  S
 class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UIScrollViewDelegate {
     
+    let refreshControlUI = UIRefreshControl()
+
+    @objc func refreshControlAction() {
+        let networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
+        if (networkStatus > 0) {
+            nowPlayingNetworkError.isHidden = false
+        }
+        refreshControlUI.endRefreshing()
+    }
+
+    
+    @IBOutlet weak var nowPlayingNetworkError: UILabel!
     @IBOutlet weak var nowPlayingTable: UITableView!
     @IBOutlet weak var nowPlayingSearchBar: UISearchBar!
     @IBOutlet weak var topRatedTableView: UITableView!
-    @IBOutlet weak var nowPlayingScroll: UIScrollView!
+    @IBOutlet weak var topRatedNetworkError: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+    
+    let indicator:UIActivityIndicatorView = UIActivityIndicatorView  (activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
+    
     var urlToFetch = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
     
     var movies: [Movie] = []
@@ -29,15 +40,25 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     var selectedIndexForRow:Int? = nil
     var selectedIndexForSection:Int? = nil
     var selectedImageURL:URL!
+    
     var selectedId:Int!
     var selectedOverview:String!
     var selectedMovie:String!
     var selectedRelease:String = ""
     var selectedVote:Float = 0.0
-    var searchActiveInNow:Bool = false
     
+    var searchActiveInNow:Bool = false
+    var countOfMovies = 0
     var isMoreDataLoading = false
+    
+    var networkStatus = 0
 
+   // var loadingMoreMovies:InfiniteScrollActivityView?
+    
+    var progressMovies:UIActivityIndicatorView!
+    
+   // var indicate:InfiniteScrollActivityView?
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActiveInNow = true
     }
@@ -64,18 +85,72 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         self.nowPlayingTable.reloadData()
     }
     
+    func startIndicator()
+    {
+        indicator.color = UIColor.red
+        indicator.frame = CGRect(x:0.0, y:0.0, width: 100, height:100)
+        indicator.center = self.view.center
+        indicator.transform =  CGAffineTransform(scaleX: 3, y: 3)
+
+        self.view.addSubview(indicator)
+        indicator.bringSubview(toFront: self.view)
+        indicator.startAnimating()
+    }
+    
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        if (networkStatus > 0) {
+            //nowPlayingNetworkError.isHidden = false
+            nowPlayingNetworkError.text = "!! Network Error!!"
+            //nowPlayingNetworkError.alpha = 1.0
+        }
+        else {
+            //nowPlayingNetworkError.isHidden = true
+            nowPlayingNetworkError.text = ""
+//            nowPlayingNetworkError.alpha = 0.0
+        }
+        startIndicator()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        indicator.stopAnimating()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.orange
+        //self.nowPlayingTable.backgroundColor = UIColor.red
+        startIndicator()
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
+        networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
+
+        if (networkStatus > 0) {
+            //nowPlayingNetworkError.isHidden = false
+            nowPlayingNetworkError.text = "!! Network Error!!"
+//            nowPlayingNetworkError.alpha = 1.0
+        }
+        else {
+            //nowPlayingNetworkError.isHidden = true
+            nowPlayingNetworkError.text = ""
+//            nowPlayingNetworkError.alpha = 0.0
+        }
+
+        
         self.nowPlayingTable.rowHeight = 130.0
         self.nowPlayingTable.dataSource = self
         self.nowPlayingTable.delegate = self
         self.nowPlayingSearchBar.delegate = self
-        
-        fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        self.nowPlayingTable.isScrollEnabled = true
+
+        refreshControlUI.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
+        nowPlayingTable.insertSubview(refreshControlUI, at: 0)
+       // topRatedTableView.insertSubview(refreshControlUI, at: 0)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,9 +160,15 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(searchActiveInNow) {
-            return filtered.count
+            countOfMovies = filtered.count
         }
-        return movies.count;
+        else {
+            countOfMovies = movies.count
+        }
+//        if (countOfMovies > 4) {
+//            return 3
+//        }
+        return countOfMovies
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -134,23 +215,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             self.selectedRelease = movie.releaseDate
         }
         return indexPath
-       // URL(s)
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if (!isMoreDataLoading) {
-//            // Calculate the position of one screen length before the bottom of the results
-//            let scrollViewContentHeight = tableView.contentSize.height
-//            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
-//            
-//            // When the user has scrolled past the threshold, start requesting
-//            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
-//                isMoreDataLoading = true
-//                
-//                // ... Code to load more results ...
-//            }
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated:false)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! MovieDetailsViewController

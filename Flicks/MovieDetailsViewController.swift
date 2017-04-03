@@ -25,8 +25,38 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var runTimeLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
     
+    let indicator:UIActivityIndicatorView = UIActivityIndicatorView  (activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
+    func startIndicator()
+    {
+        indicator.color = UIColor.red
+        indicator.frame = CGRect(x:0.0, y:0.0, width: 100, height:100)
+        indicator.center = self.view.center
+        indicator.transform =  CGAffineTransform(scaleX: 3, y: 3)
+        
+        self.view.addSubview(indicator)
+        indicator.bringSubview(toFront: self.view)
+        indicator.startAnimating()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        startIndicator()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        startIndicator()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        indicator.stopAnimating()
+    }
+
     override func viewDidLoad() {
-        super.viewDidLoad()
+        startIndicator()
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         moviesDetailImageView.setImageWith(posterURL)
        // fetchDataFromWeb()
