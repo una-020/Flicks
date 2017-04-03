@@ -53,11 +53,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     
     var networkStatus = 0
 
-   // var loadingMoreMovies:InfiniteScrollActivityView?
-    
     var progressMovies:UIActivityIndicatorView!
-    
-   // var indicate:InfiniteScrollActivityView?
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActiveInNow = true
@@ -102,14 +98,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         if (networkStatus > 0) {
-            //nowPlayingNetworkError.isHidden = false
             nowPlayingNetworkError.text = "!! Network Error!!"
-            //nowPlayingNetworkError.alpha = 1.0
         }
         else {
-            //nowPlayingNetworkError.isHidden = true
             nowPlayingNetworkError.text = ""
-//            nowPlayingNetworkError.alpha = 0.0
         }
         startIndicator()
     }
@@ -122,7 +114,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.orange
-        //self.nowPlayingTable.backgroundColor = UIColor.red
         startIndicator()
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -130,14 +121,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
 
         if (networkStatus > 0) {
-            //nowPlayingNetworkError.isHidden = false
             nowPlayingNetworkError.text = "!! Network Error!!"
-//            nowPlayingNetworkError.alpha = 1.0
         }
         else {
-            //nowPlayingNetworkError.isHidden = true
             nowPlayingNetworkError.text = ""
-//            nowPlayingNetworkError.alpha = 0.0
         }
 
         
@@ -149,8 +136,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
 
         refreshControlUI.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
         nowPlayingTable.insertSubview(refreshControlUI, at: 0)
-       // topRatedTableView.insertSubview(refreshControlUI, at: 0)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -165,9 +150,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         else {
             countOfMovies = movies.count
         }
-//        if (countOfMovies > 4) {
-//            return 3
-//        }
         return countOfMovies
     }
     
@@ -184,7 +166,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             let posterURL = URL(string:"https://image.tmdb.org/t/p/w342/\(poster)")
             cell.moviesImageView.setImageWith(posterURL!)
         } else {
-            // photos is nil. Good thing we didn't try to unwrap it!
             cell.moviesImageView.image = nil
         }
         

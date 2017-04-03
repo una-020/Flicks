@@ -64,8 +64,8 @@ class MovieDetailsViewController: UIViewController {
         movieDetailsLabel.text = self.movieTitle
         releaseDateLabel.text = self.movieRelease
         overViewLabel.text = self.overViewDetails
-        voteLabel.text = String(format:"%.2f", self.movieRate) // String(describing: self.movieRate)
-        runTimeLabel.text = "" //self.movieDetails.runTime as! String
+        voteLabel.text = String(format:"%.2f", self.movieRate)
+        runTimeLabel.text = ""
         
         // Do any additional setup after loading the view.
     }
@@ -75,31 +75,6 @@ class MovieDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    func fetchDataFromWeb(){
-//        let url = URL(string:"https://api.themoviedb.org/3/movie/\(self.id)?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")
-//        let request = URLRequest(url: url!)
-//        let session = URLSession(
-//            configuration: URLSessionConfiguration.default,
-//            delegate:nil,
-//            delegateQueue:OperationQueue.main
-//        )
-//        let task : URLSessionDataTask = session.dataTask(
-//            with: request as URLRequest,
-//            completionHandler: { (data, response, error) in
-//                if let data = data {
-//                    if let responseDictionary = try! JSONSerialization.jsonObject(
-//                        with: data, options:[]) as? NSDictionary {
-//                        self.movieDetails.id = responseDictionary["id"] as! Int
-//                        self.movieDetails.releaseDate = responseDictionary["release_date"] as! String
-//                        self.movieDetails.runTime = responseDictionary["runtime"] as! Int
-//                        self.movieDetails.voteAverage = responseDictionary["vote_average"] as! Float
-//                        self.movieTitle = responseDictionary["title"] as! String
-//                    }
-//                }
-//        });
-//        task.resume()
-//    }
-
     /*
     // MARK: - Navigation
 

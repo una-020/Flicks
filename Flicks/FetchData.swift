@@ -41,15 +41,12 @@ func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewCont
                 let  errorString:String = String(describing: error)
                 errorString.contains("The Internet connection appears to be offline.")
                 returnValue = 100
-               // print(errorString)
                 if(nowOrTop == true){
                     _self.nowPlayingTable.reloadData()
                     if(returnValue > 0) {
-                        //_self.nowPlayingNetworkError.isHidden = false
                         _self.nowPlayingNetworkError.text = "!! Network Error !!"
                     }
                     else {
-                        //_self.nowPlayingNetworkError.isHidden = true
                         _self.nowPlayingNetworkError.text = ""
                     }
                     
@@ -57,11 +54,9 @@ func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewCont
                 else{
                     _self.topRatedTableView.reloadData()
                     if(returnValue > 0) {
-                        //_self.topRatedNetworkError.isHidden = false
                         _self.topRatedNetworkError.text = "!! Network Error !!"
                     }
                     else {
-//                        _self.topRatedNetworkError.isHidden = true
                         _self.topRatedNetworkError.text = ""
                     }
                     
@@ -72,46 +67,3 @@ func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewCont
     task.resume()
                     return returnValue
 }
-//
-//class InfiniteScrollActivityView: UIView {
-//    
-//    var loadingIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
-//    
-//    static let defaultHeight:CGFloat = 60.0
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        setupActivityIndicator()
-//    }
-//    
-//    override init(frame aRect: CGRect) {
-//        super.init(frame: aRect)
-//        setupActivityIndicator()
-//    }
-//    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        loadingIndicatorView.center = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
-//        loadingIndicatorView.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
-//        loadingIndicatorView.transform = CGAffineTransform(scaleX: 3, y: 3)
-//    }
-//    
-//    func setupActivityIndicator() {
-//        loadingIndicatorView.activityIndicatorViewStyle = .gray
-//        loadingIndicatorView.sizeToFit()
-//        loadingIndicatorView.hidesWhenStopped = true
-//        self.addSubview(loadingIndicatorView)
-//    }
-//    
-//    func stopAnimating() {
-//        self.loadingIndicatorView.stopAnimating()
-//        self.isHidden = true
-//    }
-//    
-//    func startAnimating() {
-//        self.isHidden = false
-//        self.loadingIndicatorView.startAnimating()
-//    }
-//}
-//
-
