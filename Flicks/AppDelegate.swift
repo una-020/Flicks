@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Flicks
 //
-//  Created by Badhri Jagan Sridharan on 3/31/17.
+//  Created by Anusha Kopparam on 3/31/17.
 //  Copyright © 2017 Anusha Kopparam. All rights reserved.
 //
 
