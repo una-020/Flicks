@@ -15,9 +15,8 @@ class TopRatedViewController: NowPlayingViewController {
     @IBOutlet weak var topRatedSearchBar: UISearchBar!
     
     
-    
     @objc override func refreshControlAction() {
-        fetchMoviesList(fetchURL: topToFetch, nowOrTop: false, _self: self)
+        fetchMoviesList(fetchURL: topToFetch, nowOrTop: false, _self: self, completion: completionHandler)
         refreshControlUI.endRefreshing()
     }
     
@@ -25,32 +24,46 @@ class TopRatedViewController: NowPlayingViewController {
     var topMovies: [Movie] = []
     var searchActiveInTop: Bool = false
     
+    override func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActiveInTop = true
+    }
+    
+    override func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActiveInTop = false
+    }
+    
+    override func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActiveInTop = false
+    }
+    
+    override func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActiveInTop = false;
+    }
+
     override func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = self.movies.filter({ (movie) -> Bool in return movie.title.contains(searchText)})
 
         if(filtered.count == 0){
-            searchActiveInNow = false;
+            searchActiveInTop = false;
         } else {
-            searchActiveInNow = true;
+            searchActiveInTop = true;
         }
         self.topTableView.reloadData()
     }
 
+    // override
     override func viewDidLoad() {
         self.topTableView.rowHeight = 130.0
         self.topTableView.dataSource = self
         self.topTableView.delegate = self
         self.topRatedSearchBar.delegate = self
-        networkStatus = fetchMoviesList(fetchURL: topToFetch, nowOrTop: false, _self: self)
+
+        topRatedSearchBar.isHidden = false
+        //topRatedSearchBar.barPosition
+        self.view.bringSubview(toFront: topRatedSearchBar)
         
-        
-        if (networkStatus > 0) {
-            NetworkErrorLabel.text = "!! Network Error!!"
-        }
-        else {
-            NetworkErrorLabel.text = ""
-        }
-        
+        networkStatus = fetchMoviesList(fetchURL: topToFetch, nowOrTop: false, _self: self, completion: completionHandler)
+
         refreshControlUI.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
         topTableView.insertSubview(refreshControlUI, at: 0)
     }
@@ -61,12 +74,9 @@ class TopRatedViewController: NowPlayingViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if (networkStatus > 0) {
-            NetworkErrorLabel.text = "!! Network Error!!"
-        }
-        else {
-            NetworkErrorLabel.text = ""
-        }
+        topRatedSearchBar.isHidden = false
+        //topRatedSearchBar.barPosition
+        self.view.bringSubview(toFront: topRatedSearchBar)
         startIndicator()
     }
     

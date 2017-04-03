@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewController) -> Int {
+func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewController, completion:@escaping (String?,NowPlayingViewController,Bool,String) -> ()) -> Int {
     let url = URL(string: fetchURL)
     let request = URLRequest(url: url!)
     var returnValue = 0
@@ -29,6 +29,7 @@ func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewCont
                         _self.movies.append(Movie(jsonResult: result))
                     }
                 }
+                completion("",_self,nowOrTop,"no error")
             }
             if(nowOrTop == true){
                 _self.nowPlayingTable.reloadData()
@@ -39,31 +40,33 @@ func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewCont
             if let error = error
             {
                 let  errorString:String = String(describing: error)
-                errorString.contains("The Internet connection appears to be offline.")
-                returnValue = 100
-                if(nowOrTop == true){
-                    _self.nowPlayingTable.reloadData()
-                    if(returnValue > 0) {
-                        _self.nowPlayingNetworkError.text = "!! Network Error !!"
-                    }
-                    else {
-                        _self.nowPlayingNetworkError.text = ""
-                    }
-                    
-                }
-                else{
-                    _self.topRatedTableView.reloadData()
-                    if(returnValue > 0) {
-                        _self.topRatedNetworkError.text = "!! Network Error !!"
-                    }
-                    else {
-                        _self.topRatedNetworkError.text = ""
-                    }
-                    
-                }
-
+                completion(errorString,_self,nowOrTop,"error")
             }
     });
     task.resume()
                     return returnValue
+}
+
+func completionHandler(result: String?, _self: NowPlayingViewController, nowOrTop: Bool, error: String) {
+    print(result)
+    if(error == "error"){
+        if(nowOrTop == true){
+            _self.nowPlayingNetworkError.text = "!!Network Error !!"
+            _self.nowPlayingNetworkError.alpha = 1.0
+        }
+        else{
+            _self.topRatedNetworkError.text = "!! Network Error !!"
+            _self.topRatedNetworkError.alpha = 1.0
+        }
+    }
+    else{
+        if(nowOrTop == true){
+            _self.nowPlayingNetworkError.text = ""
+            _self.nowPlayingNetworkError.alpha = 0.0
+        }
+        else{
+            _self.topRatedNetworkError.text = ""
+            _self.topRatedNetworkError.alpha = 0.0
+        }
+    }
 }

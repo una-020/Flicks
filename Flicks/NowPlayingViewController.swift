@@ -14,14 +14,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     let refreshControlUI = UIRefreshControl()
 
     @objc func refreshControlAction() {
-        let networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
-        if (networkStatus > 0) {
-            nowPlayingNetworkError.isHidden = false
-        }
+        let networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self, completion: completionHandler)
         refreshControlUI.endRefreshing()
     }
 
-    
+
     @IBOutlet weak var nowPlayingNetworkError: UILabel!
     @IBOutlet weak var nowPlayingTable: UITableView!
     @IBOutlet weak var nowPlayingSearchBar: UISearchBar!
@@ -97,12 +94,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        if (networkStatus > 0) {
-            nowPlayingNetworkError.text = "!! Network Error!!"
-        }
-        else {
-            nowPlayingNetworkError.text = ""
-        }
         startIndicator()
     }
     
@@ -118,14 +109,14 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
-        networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self)
+        networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self, completion: completionHandler)
 
-        if (networkStatus > 0) {
-            nowPlayingNetworkError.text = "!! Network Error!!"
-        }
-        else {
-            nowPlayingNetworkError.text = ""
-        }
+//        if (networkStatus > 0) {
+//            nowPlayingNetworkError.text = "!! Network Error!!"
+//        }
+//        else {
+//            nowPlayingNetworkError.text = ""
+//        }
 
         
         self.nowPlayingTable.rowHeight = 130.0
@@ -136,6 +127,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
 
         refreshControlUI.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
         nowPlayingTable.insertSubview(refreshControlUI, at: 0)
+        
     }
 
     override func didReceiveMemoryWarning() {
