@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Top Rated-->
+        <!--Top Rated View Controller-->
         <scene sceneID="kEw-Pz-bCN">
             <objects>
                 <viewController id="U8o-Aa-xL9" customClass="TopRatedViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="167" sectionHeaderHeight="28" sectionFooterHeight="28" id="nZg-xk-567">
-                                <rect key="frame" x="0.0" y="72" width="320" height="505"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="448"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -81,7 +81,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Top Rated" id="B9N-zh-nev"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="B9N-zh-nev"/>
                     <connections>
                         <outlet property="NetworkErrorLabel" destination="7Mb-tf-i6y" id="s5n-Ke-O2a"/>
                         <outlet property="topRatedNetworkError" destination="7Mb-tf-i6y" id="s7u-Zm-fZa"/>
@@ -110,7 +110,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="167" sectionHeaderHeight="28" sectionFooterHeight="28" id="rcV-od-rHV">
-                                <rect key="frame" x="0.0" y="72" width="320" height="505"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="449"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -166,7 +166,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="bI7-yy-MZ2"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="nowPLaying.png" id="bI7-yy-MZ2"/>
                     <connections>
                         <outlet property="nowPlayingNetworkError" destination="dxN-qB-E6J" id="BvY-7N-mBY"/>
                         <outlet property="nowPlayingSearchBar" destination="URs-XE-BqA" id="bGa-Cq-FxC"/>
@@ -328,6 +328,9 @@
             <point key="canvasLocation" x="-90" y="1655.2716666666665"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="nowPLaying.png" width="29" height="29"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

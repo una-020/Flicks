@@ -46,9 +46,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "148">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,9 +60,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
+            endingLineNumber = "143">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,9 +74,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "154">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,9 +88,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "166">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,9 +102,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "167">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,9 +116,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
+            endingLineNumber = "140">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -142,9 +130,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "searchBar(_:textDidChange:)"
-            landmarkType = "7">
+            endingLineNumber = "79">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,9 +144,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "searchBar(_:textDidChange:)"
-            landmarkType = "7">
+            endingLineNumber = "73">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,9 +158,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "tableView(_:willSelectRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "190">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -190,9 +172,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "193">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -206,9 +186,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "tableView(_:willSelectRowAt:)"
-            landmarkType = "7">
+            endingLineNumber = "183">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -222,9 +200,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "fetchMoviesList(fetchURL:nowOrTop:_self:completion:)"
-            landmarkType = "9">
+            endingLineNumber = "34">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
