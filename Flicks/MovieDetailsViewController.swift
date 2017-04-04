@@ -59,15 +59,12 @@ class MovieDetailsViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         moviesDetailImageView.setImageWith(posterURL)
-       // fetchDataFromWeb()
   
         movieDetailsLabel.text = self.movieTitle
         releaseDateLabel.text = self.movieRelease
         overViewLabel.text = self.overViewDetails
         voteLabel.text = String(format:"%.2f", self.movieRate)
         runTimeLabel.text = ""
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,7 @@
 
 import UIKit
 import AFNetworking
-//import  S
+    
 class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UIScrollViewDelegate {
     
     let refreshControlUI = UIRefreshControl()
@@ -111,14 +111,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
 
         networkStatus = fetchMoviesList(fetchURL: self.urlToFetch, nowOrTop: true, _self: self, completion: completionHandler)
 
-//        if (networkStatus > 0) {
-//            nowPlayingNetworkError.text = "!! Network Error!!"
-//        }
-//        else {
-//            nowPlayingNetworkError.text = ""
-//        }
 
-        
         self.nowPlayingTable.rowHeight = 130.0
         self.nowPlayingTable.dataSource = self
         self.nowPlayingTable.delegate = self
@@ -132,7 +125,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -48,7 +48,6 @@ func fetchMoviesList(fetchURL: String, nowOrTop: Bool, _self: NowPlayingViewCont
 }
 
 func completionHandler(result: String?, _self: NowPlayingViewController, nowOrTop: Bool, error: String) {
-    print(result)
     if(error == "error"){
         if(nowOrTop == true){
             _self.nowPlayingNetworkError.text = "!!Network Error !!"

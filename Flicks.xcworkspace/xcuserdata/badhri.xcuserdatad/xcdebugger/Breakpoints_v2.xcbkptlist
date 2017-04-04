@@ -14,9 +14,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "MoviesTableViewCell"
-            landmarkType = "3">
+            endingLineNumber = "13">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,8 +28,22 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "MoviesTableViewCell"
+            endingLineNumber = "12">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flicks/NowPlayingViewController.swift"
+            timestampString = "512955205.237566"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "NowPlayingViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +54,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148">
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -56,11 +70,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143">
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -70,11 +86,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154">
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -84,11 +102,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166">
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,11 +118,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167">
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -112,11 +134,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,11 +150,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79">
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -140,25 +166,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190">
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "tableView(_:willSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -168,11 +182,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193">
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "NowPlayingViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -182,11 +198,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flicks/NowPlayingViewController.swift"
-            timestampString = "512949219.639876"
+            timestampString = "512955205.237566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183">
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "tableView(_:willSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
